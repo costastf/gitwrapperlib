@@ -24,16 +24,16 @@
 #
 
 """
-gitlib package
+gitwrapperlib package
 
-Import all parts from gitlib here
+Import all parts from gitwrapperlib here
 
 .. _Google Python Style Guide:
    http://google.github.io/styleguide/pyguide.html
 """
 from ._version import __version__
-from .gitlibexceptions import ExecutableNotFound
-from .gitlib import Git
+from .gitwrapperlibexceptions import ExecutableNotFound
+from .gitwrapperlib import Git
 
 __author__ = '''Costas Tyfoxylos <costas.tyf@gmail.com>'''
 __docformat__ = '''google'''

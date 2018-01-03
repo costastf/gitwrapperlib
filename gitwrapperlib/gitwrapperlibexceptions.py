@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# File: gitlibexceptions.py
+# File: gitwrapperlibexceptions.py
 #
 # Copyright 2018 Costas Tyfoxylos
 #
@@ -24,7 +24,7 @@
 #
 
 """
-Custom exception code for gitlib
+Custom exception code for gitwrapperlib
 
 .. _Google Python Style Guide:
    http://google.github.io/styleguide/pyguide.html

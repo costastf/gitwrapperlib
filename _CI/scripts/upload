@@ -23,7 +23,7 @@ echo "Creating dev-requirements.txt"
 # copy files in the structure
 for file in "${required_files[@]}"
     do
-        cp $file gitlib/$file
+        cp $file gitwrapperlib/$file
     done
 
 # package and upload
@@ -32,5 +32,5 @@ python setup.py sdist bdist_egg  upload -r pypi
 # remove files from the structure
 for file in "${required_files[@]}"
     do
-        rm gitlib/$file
+        rm gitwrapperlib/$file
     done

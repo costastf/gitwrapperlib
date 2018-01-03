@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# File: gitlib.py
+# File: gitwrapperlib.py
 #
 # Copyright 2018 Costas Tyfoxylos
 #
@@ -24,7 +24,7 @@
 #
 
 """
-Main code for gitlib
+Main code for gitwrapperlib
 
 .. _Google Python Style Guide:
    http://google.github.io/styleguide/pyguide.html
@@ -33,7 +33,7 @@ Main code for gitlib
 
 import logging
 import sh
-from .gitlibexceptions import ExecutableNotFound
+from .gitwrapperlibexceptions import ExecutableNotFound
 
 __author__ = '''Costas Tyfoxylos <costas.tyf@gmail.com>'''
 __docformat__ = '''google'''
@@ -47,7 +47,7 @@ __status__ = '''Development'''  # "Prototype", "Development", "Production".
 
 
 # This is the main prefix used for logging
-LOGGER_BASENAME = '''gitlib'''
+LOGGER_BASENAME = '''gitwrapperlib'''
 LOGGER = logging.getLogger(LOGGER_BASENAME)
 LOGGER.addHandler(logging.NullHandler())
 

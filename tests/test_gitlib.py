@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# File: test_gitlib.py
+# File: test_gitwrapperlib.py
 #
 # Copyright 2018 Costas Tyfoxylos
 #
@@ -24,9 +24,9 @@
 #
 
 """
-test_gitlib
+test_gitwrapperlib
 ----------------------------------
-Tests for `gitlib` module.
+Tests for `gitwrapperlib` module.
 
 .. _Google Python Style Guide:
    http://google.github.io/styleguide/pyguide.html
@@ -46,7 +46,7 @@ __email__ = '''<costas.tyf@gmail.com>'''
 __status__ = '''Development'''  # "Prototype", "Development", "Production".
 
 
-class TestGitlib(unittest.BetamaxTestCase):
+class TestGitwrapperlib(unittest.BetamaxTestCase):
 
     def setUp(self):
         """

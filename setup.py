@@ -26,21 +26,21 @@ version = open('.VERSION').read()
 
 
 setup(
-    name='''gitlib''',
+    name='''gitwrapperlib''',
     version=version,
     description='''A lightweight wrapper for git command using sh module''',
     long_description=readme + '\n\n' + history,
     author='''Costas Tyfoxylos''',
     author_email='''costas.tyf@gmail.com''',
-    url='''https://github.com/costastf/gitlib''',
+    url='''https://github.com/costastf/gitwrapperlib''',
     packages=find_packages(where='.', exclude=('tests', 'hooks')),
-    package_dir={'''gitlib''':
-                 '''gitlib'''},
+    package_dir={'''gitwrapperlib''':
+                 '''gitwrapperlib'''},
     include_package_data=True,
     install_requires=requirements,
     license='MIT',
     zip_safe=False,
-    keywords='''gitlib git wrapper sh''',
+    keywords='''gitwrapperlib git wrapper sh''',
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',

@@ -4,13 +4,13 @@ Installation
 
 At the command line::
 
-    $ pip install gitlib
+    $ pip install gitwrapperlib
 
 Or, if you have virtualenvwrapper installed::
 
-    $ mkvirtualenv gitlib
-    $ pip install gitlib
+    $ mkvirtualenv gitwrapperlib
+    $ pip install gitwrapperlib
 
 Or, if you are using pipenv::
 
-    $ pipenv install gitlib
+    $ pipenv install gitwrapperlib

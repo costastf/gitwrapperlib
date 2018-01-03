@@ -2,9 +2,9 @@
 Usage
 =====
 
-To use gitlib in a project:
+To use gitwrapperlib in a project:
 
 .. code-block:: python
 
-    from gitlib import Gitlib
-    gitlib = Gitlib()
+    from gitwrapperlib import Git
+    git = Git()

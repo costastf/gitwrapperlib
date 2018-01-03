@@ -16,16 +16,16 @@ If you are proposing a feature:
 Get Started!
 ------------
 
-Ready to contribute? Here's how to set up `gitlib` for local development.
+Ready to contribute? Here's how to set up `gitwrapperlib` for local development.
 
 1. Clone your fork locally::
 
-    $ git clone https://github.com/costastf/gitlib
+    $ git clone https://github.com/costastf/gitwrapperlib
 
 2. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your clone for local development::
 
-    $ mkvirtualenv gitlib
-    $ cd gitlib/
+    $ mkvirtualenv gitwrapperlib
+    $ cd gitwrapperlib/
     $ python setup.py develop
 
 3. Create a branch for local development::

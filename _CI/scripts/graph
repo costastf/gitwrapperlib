@@ -5,6 +5,6 @@ cd $(dirname $0)/../..
 
 
 cd graphs
-pipenv run pyreverse -o png -A -f PUB_ONLY -p graphs ../gitlib
+pipenv run pyreverse -o png -A -f PUB_ONLY -p graphs ../gitwrapperlib
 
 echo "You should have class and package graphs under the graphs directory"

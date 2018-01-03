@@ -14,6 +14,6 @@ fi
 pipenv --venv
 if [ $? != 0 ]
 then
-  echo "Creating virtualenv for gitlib"
+  echo "Creating virtualenv for gitwrapperlib"
   pipenv install --dev
 fi
