@@ -40,3 +40,7 @@ __license__ = '''MIT'''
 __maintainer__ = '''Costas Tyfoxylos'''
 __email__ = '''<costas.tyf@gmail.com>'''
 __status__ = '''Development'''  # "Prototype", "Development", "Production".
+
+
+class ExecutableNotFound(Exception):
+    """The git command was not found on the system"""

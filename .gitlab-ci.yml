@@ -1,0 +1,50 @@
+stages:
+  - lint
+  - test
+  - build
+  - upload
+  # - docs
+
+lint:
+  tags:
+    - docker
+  stage: lint
+  image: https://enexis-docker-local.jfrog.io/python_ci_runner_image:0.1.0
+  script:
+    - _CI/scripts/lint
+
+test:
+  tags:
+    - docker
+  stage: test
+  image: https://enexis-docker-local.jfrog.io/python_ci_runner_image:0.1.0
+  script:
+    - _CI/scripts/test
+
+build:
+  tags:
+    - docker
+  stage: build
+  image: https://enexis-docker-local.jfrog.io/python_ci_runner_image:0.1.0
+  script:
+    - _CI/scripts/build
+
+upload:
+  tags:
+    - docker
+  stage: upload
+  image: https://enexis-docker-local.jfrog.io/python_ci_runner_image:0.1.0
+  only:
+    - tags
+  script:
+    - _CI/scripts/upload
+
+# docs:
+#   tags:
+#     - docker
+#   stage: docs
+#   image: enx-docker-multirunner
+#   only:
+#     - tags
+#   script:
+#     - _CI/scripts/document
