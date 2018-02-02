@@ -61,5 +61,8 @@ try:
     with open(VERSION_FILE_PATH) as f:
         __version__ = f.read()
 except IOError:
-    with open(LOCAL_VERSION_FILE_PATH) as f:
-        __version__ = f.read()
+    try:
+        with open(LOCAL_VERSION_FILE_PATH) as f:
+            __version__ = f.read()
+    except IOError:
+        __version__ = 'unknown'
