@@ -8,3 +8,4 @@
 # Please use Pipfile to update the requirements.
 #
 sh==1.12.14
+pbs==0.110

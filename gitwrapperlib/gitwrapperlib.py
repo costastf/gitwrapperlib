@@ -49,7 +49,7 @@ except ImportError:
         def __getattr__(self, attr):
             return pbs.Command(attr)
     sh = Sh()
-from .gitwrapperlibexceptions import ExecutableNotFound    
+from .gitwrapperlibexceptions import ExecutableNotFound
 
 __author__ = '''Costas Tyfoxylos <costas.tyf@gmail.com>'''
 __docformat__ = '''google'''
@@ -85,15 +85,15 @@ class Git(object):
         if sys.platform in ('win32', 'cygwin'):
             try:
                 sh.git()
-            except WindowsError:
-                raise ExecutableNotFound    
+            except WindowsError:  # pylint: disable=undefined-variable
+                raise ExecutableNotFound
             except ErrorReturnCode_1:
                 git = sh.git
         else:
             try:
                 git = sh.Command('git')
             except sh.CommandNotFound:
-                raise ExecutableNotFound   
+                raise ExecutableNotFound
         return git
 
     def __getattr__(self, name):
