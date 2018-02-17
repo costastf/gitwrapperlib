@@ -32,7 +32,21 @@ Main code for gitwrapperlib
 """
 
 import logging
-import sh
+try:
+    import sh
+except ImportError:
+    # fallback: emulate the sh API with pbs
+    import pbs
+
+    class Sh(object):  # pylint: disable=too-few-public-methods
+        """
+        Overloading pds to look like sh
+
+        https://stackoverflow.com/questions/28618906/porting-sh-1-11-based-code-to-windows
+        """
+        def __getattr__(self, attr):
+            return pbs.Command(attr)
+    sh = Sh()
 from .gitwrapperlibexceptions import ExecutableNotFound
 
 __author__ = '''Costas Tyfoxylos <costas.tyf@gmail.com>'''
