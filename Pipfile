@@ -1,22 +1,26 @@
 [[source]]
+
 url = "https://pypi.python.org/simple"
 verify_ssl = true
 name = "pypi"
+
 
 [dev-packages]
 
 pipenv = "*"
 sphinx = "*"
-sphinx_rtd_theme = "*"
+sphinx-rtd-theme = "*"
 coverage = "*"
 nose = "*"
-"nose-htmloutput" = "*"
+nose-htmloutput = "*"
 prospector = "*"
 tox = "*"
-"logilab-common" = "*"
+logilab-common = "*"
 betamax = "*"
 hypothesis = "*"
 
 
 [packages]
+
 sh = "*"
+pbs = "*"

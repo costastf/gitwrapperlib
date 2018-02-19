@@ -32,7 +32,23 @@ Main code for gitwrapperlib
 """
 
 import logging
-import sh
+import sys
+try:
+    import sh
+except ImportError:
+    # fallback: emulate the sh API with pbs
+    import pbs
+    from pbs import ErrorReturnCode_1
+
+    class Sh(object):  # pylint: disable=too-few-public-methods
+        """
+        Overloading pds to look like sh
+
+        https://stackoverflow.com/questions/28618906/porting-sh-1-11-based-code-to-windows
+        """
+        def __getattr__(self, attr):
+            return pbs.Command(attr)
+    sh = Sh()
 from .gitwrapperlibexceptions import ExecutableNotFound
 
 __author__ = '''Costas Tyfoxylos <costas.tyf@gmail.com>'''
@@ -66,10 +82,18 @@ class Git(object):
 
     @staticmethod
     def _get_command():
-        try:
-            git = sh.Command('git')
-        except sh.CommandNotFound:
-            raise ExecutableNotFound
+        if sys.platform in ('win32', 'cygwin'):
+            try:
+                sh.git()
+            except WindowsError:  # pylint: disable=undefined-variable
+                raise ExecutableNotFound
+            except ErrorReturnCode_1:
+                git = sh.git
+        else:
+            try:
+                git = sh.Command('git')
+            except sh.CommandNotFound:
+                raise ExecutableNotFound
         return git
 
     def __getattr__(self, name):
