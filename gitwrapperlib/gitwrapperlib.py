@@ -104,6 +104,10 @@ class Git(object):
                 return getattr(self._git, name)(*args, **kwargs)
             return wrapper
 
+    def remove(self, path):
+        """Removes a path with force"""
+        self._git.rm('-rf', path)
+
     def add_forced(self, path):
         """Adds a path with force"""
         self._git.add('-f', path)
