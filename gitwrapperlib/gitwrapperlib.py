@@ -153,3 +153,7 @@ class Git(object):
     def remove_branch(self, name):
         """Removes a branch"""
         self._git.branch('-d', name)
+
+    def switch_branch(self, name):
+        """Switches to a branch"""
+        self._git.checkout(name)
