@@ -33,6 +33,7 @@ Main code for gitwrapperlib
 
 import logging
 import sys
+import re
 try:
     import sh
 except ImportError:
@@ -137,11 +138,13 @@ class Git(object):
     def _sanitize(value):
         if value.startswith('*'):
             value = value.split()[1]
-        return value.strip()
+        ansi_escape = re.compile(r'\x1B\[[0-?]*[ -/]*[@-~]')
+        value = ansi_escape.sub('', value.strip())
+        return value
 
     def get_current_branch(self):
         """Returns the currently active branch"""
-        return next((branch.split()[1]
+        return next((self._sanitize(branch)
                      for branch in self._git.branch(color="never").splitlines()
                      if branch.startswith('*')),
                     None)
