@@ -73,7 +73,7 @@ class Git(object):
     """Models the git command and contstructs some extra helper methods"""
 
     passthrough_methods = ('init', 'push', 'pull')
-    argument_methods = ('add', 'clone')
+    argument_methods = ('add', 'clone', 'tag')
 
     def __init__(self):
         logger_name = u'{base}.{suffix}'.format(base=LOGGER_BASENAME,
