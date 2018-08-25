@@ -10,14 +10,14 @@ set -e
 # cleaning up directories if exist
 rm -rf build dist
 
-echo "Locking requirements to create up to date files"
-pipenv lock
-
-echo "Creating requirements.txt"
-./_CI/bin/create_requirements.py default
-
-echo "Creating dev-requirements.txt"
-./_CI/bin/create_requirements.py develop
+#echo "Locking requirements to create up to date files"
+#pipenv lock
+#
+#echo "Creating requirements.txt"
+#./_CI/bin/create_requirements.py default
+#
+#echo "Creating dev-requirements.txt"
+#./_CI/bin/create_requirements.py develop
 
 
 # copy files in the structure

@@ -7,5 +7,5 @@
 #
 # Please use Pipfile to update the requirements.
 #
-sh==1.12.14
-pbs==0.110
+sh==1.12.14; sys_platform != 'win32'
+pbs==0.110; sys_platform == 'win32'

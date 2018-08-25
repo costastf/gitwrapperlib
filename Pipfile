@@ -7,20 +7,26 @@ name = "pypi"
 
 [dev-packages]
 
-pipenv = "*"
-sphinx = "*"
-sphinx-rtd-theme = "*"
-coverage = "*"
-nose = "*"
-nose-htmloutput = "*"
-prospector = "*"
-tox = "*"
-logilab-common = "*"
-betamax = "*"
-hypothesis = "*"
+
+# linting dependencies
+prospector = "==0.12.7"
+
+# documentation dependencies
+sphinx = "==1.7.6"
+sphinx-rtd-theme = "==0.4.0"
+
+# testing dependencies
+tox = "==3.1.2"
+coverage = "==4.5.1"
+nose = "==1.3.7"
+nose-htmloutput = "==0.6.0"
+betamax = "==0.8.1"
+
+# uploading dependencies
+twine = "==1.10.0"
 
 
 [packages]
 
-sh = "*"
-pbs = "*"
+sh = {version = "==1.12.14", sys_platform = "!='win32'"}
+pbs = {version = "==0.110", sys_platform = "=='win32'"}

@@ -39,11 +39,10 @@ try:
 except ImportError:
     # fallback: emulate the sh API with pbs
     import pbs
-    from pbs import ErrorReturnCode_1
 
     class Sh(object):  # pylint: disable=too-few-public-methods
         """
-        Overloading pds to look like sh
+        Overloading pbs to look like sh
 
         https://stackoverflow.com/questions/28618906/porting-sh-1-11-based-code-to-windows
         """
@@ -88,7 +87,7 @@ class Git(object):
                 sh.git()
             except WindowsError:  # pylint: disable=undefined-variable
                 raise ExecutableNotFound
-            except ErrorReturnCode_1:
+            except pbs.ErrorReturnCode_1:
                 git = sh.git
         else:
             try:
