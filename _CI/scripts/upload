@@ -1,36 +1,9 @@
-#!/bin/bash --login
-# we want all these files to exist in the actual package
-required_files=(".VERSION" "LICENSE" "AUTHORS.rst" "CONTRIBUTING.rst" "HISTORY.rst" "README.rst" "USAGE.rst" "Pipfile" "Pipfile.lock" "requirements.txt" "dev-requirements.txt")
-
+#!/usr/bin/env bash
 cd $(dirname $0)/../..
 
-. _CI/scripts/bootstrap
-set -e
+. _CI/scripts/build
 
-# cleaning up directories if exist
-rm -rf build dist
-
-echo "Locking requirements to create up to date files"
-pipenv lock
-
-echo "Creating requirements.txt"
-./_CI/bin/create_requirements.py default
-
-echo "Creating dev-requirements.txt"
-./_CI/bin/create_requirements.py develop
-
-
-# copy files in the structure
-for file in "${required_files[@]}"
-    do
-        cp $file gitwrapperlib/$file
-    done
-
-# package and upload
-python setup.py sdist bdist_egg  upload -r pypi
-
-# remove files from the structure
-for file in "${required_files[@]}"
-    do
-        rm gitwrapperlib/$file
-    done
+pipenv run twine upload dist/* \
+                        -u "${PYPI_UPLOAD_USER}" \
+                        --skip-existing \
+                        --repository-url https://upload.pypi.org/legacy/
