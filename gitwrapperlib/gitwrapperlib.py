@@ -72,7 +72,7 @@ class Git(object):
     """Models the git command and contstructs some extra helper methods"""
 
     passthrough_methods = ('init', 'push', 'pull')
-    argument_methods = ('add', 'clone', 'tag')
+    argument_methods = ('add', 'clone')
 
     def __init__(self):
         logger_name = u'{base}.{suffix}'.format(base=LOGGER_BASENAME,
@@ -159,3 +159,19 @@ class Git(object):
     def switch_branch(self, name):
         """Switches to a branch"""
         self._git.checkout(name)
+
+    def list_tags(self):
+        """Lists existing tags"""
+        return self._git.tag()
+
+    def add_tag(self, value):
+        """Tag with provided value"""
+        self._git.tag(value)
+
+    def delete_tag(self, value):
+        """Delete the tag provided"""
+        self._git.tag('-d', value)
+
+    def create_patch(self, from_tag, to_tag):
+        """Create a patch between tags"""
+        return self._git.diff(from_tag, to_tag)
