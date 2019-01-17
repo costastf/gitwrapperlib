@@ -124,6 +124,14 @@ class Git(object):
         """Pushes to master"""
         self._git.push('origin', 'master')
 
+    def push_force_master(self):
+        """Pushes to master"""
+        self._git.push('origin', 'master', '--force')
+
+    def push_force_branch(self, branch):
+        """Pushes to master"""
+        self._git.push('origin', branch, '--force')
+
     def branch_upstream_to_master(self):
         """Branches upstream to master"""
         self._git.branch('-u', 'origin/master')
