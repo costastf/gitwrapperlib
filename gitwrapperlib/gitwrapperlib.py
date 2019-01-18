@@ -71,8 +71,8 @@ LOGGER.addHandler(logging.NullHandler())
 class Git(object):
     """Models the git command and contstructs some extra helper methods"""
 
-    passthrough_methods = ('init', 'push', 'pull')
-    argument_methods = ('add', 'clone')
+    passthrough_methods = ('init', 'pull')
+    argument_methods = ('add', 'clone', 'push')
 
     def __init__(self):
         logger_name = u'{base}.{suffix}'.format(base=LOGGER_BASENAME,
