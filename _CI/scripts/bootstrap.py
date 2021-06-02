@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# File: test_gitwrapperlib.py
+# File: bootstrap.py
 #
 # Copyright 2018 Costas Tyfoxylos
 #
@@ -23,43 +23,24 @@
 #  DEALINGS IN THE SOFTWARE.
 #
 
-"""
-test_gitwrapperlib
-----------------------------------
-Tests for `gitwrapperlib` module.
+import os
+import logging
 
-.. _Google Python Style Guide:
-   http://google.github.io/styleguide/pyguide.html
+# this sets up everything and MUST be included before any third party module in every step
+import _initialize_template
 
-"""
+from configuration import LOGGING_LEVEL
+from library import setup_logging
 
-from betamax.fixtures import unittest
-
-__author__ = '''Costas Tyfoxylos <costas.tyf@gmail.com>'''
-__docformat__ = '''google'''
-__date__ = '''2018-01-02'''
-__copyright__ = '''Copyright 2018, Costas Tyfoxylos'''
-__credits__ = ["Costas Tyfoxylos"]
-__license__ = '''MIT'''
-__maintainer__ = '''Costas Tyfoxylos'''
-__email__ = '''<costas.tyf@gmail.com>'''
-__status__ = '''Development'''  # "Prototype", "Development", "Production".
+# This is the main prefix used for logging
+LOGGER_BASENAME = '''_CI.bootstrap'''
+LOGGER = logging.getLogger(LOGGER_BASENAME)
+LOGGER.addHandler(logging.NullHandler())
 
 
-class TestGitwrapperlib(unittest.BetamaxTestCase):
+def bootstrap():
+    setup_logging(os.environ.get("LOGGING_LEVEL") or LOGGING_LEVEL)
 
-    def setUp(self):
-        """
-        Test set up
 
-        This is where you can setup things that you use throughout the tests. This method is called before every test.
-        """
-        pass
-
-    def tearDown(self):
-        """
-        Test tear down
-
-        This is where you should tear down what you've setup in setUp before. This method is called after every test.
-        """
-        pass
+if __name__ == '__main__':
+    bootstrap()

@@ -24,7 +24,7 @@
 #
 
 """
-Custom exception code for gitwrapperlib
+Custom exception code for gitwrapperlib.
 
 .. _Google Python Style Guide:
    http://google.github.io/styleguide/pyguide.html
@@ -33,7 +33,7 @@ Custom exception code for gitwrapperlib
 
 __author__ = '''Costas Tyfoxylos <costas.tyf@gmail.com>'''
 __docformat__ = '''google'''
-__date__ = '''2018-01-02'''
+__date__ = '''02-01-2018'''
 __copyright__ = '''Copyright 2018, Costas Tyfoxylos'''
 __credits__ = ["Costas Tyfoxylos"]
 __license__ = '''MIT'''
@@ -43,4 +43,4 @@ __status__ = '''Development'''  # "Prototype", "Development", "Production".
 
 
 class ExecutableNotFound(Exception):
-    """The git command was not found on the system"""
+    """The git command was not found on the system."""

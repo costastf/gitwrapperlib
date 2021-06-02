@@ -1,5 +1,5 @@
 .. gitwrapperlib documentation master file, created by
-   sphinx-quickstart on 2018-01-02.
+   sphinx-quickstart on 2021-06-02.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 

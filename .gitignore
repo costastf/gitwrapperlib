@@ -3,6 +3,8 @@
 *.egg-info
 /dist/
 /build/
+/_build/
+.eggs/
 /eggs/
 /parts/
 /var/
@@ -11,7 +13,6 @@
 .installed.cfg
 /lib/
 /lib64/
-/_build
 
 *.py[cod]
 
@@ -48,11 +49,16 @@ docs/_build
 
 # VirtualEnv
 env
-env*
 .venv
 
 # Mac
 .DS_Store
 
-#Visual Studio Code
+# Variables file
+.env
+
+# pyenv local python version marker
+.python-version
+
+# Visual studio code
 .vscode

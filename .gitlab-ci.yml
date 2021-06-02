@@ -3,48 +3,31 @@ stages:
   - test
   - build
   - upload
-  # - docs
 
 lint:
-  tags:
-    - docker
+  tags: [docker]
   stage: lint
-  image: https://enexis-docker-local.jfrog.io/python_ci_runner_image:0.1.0
-  script:
-    - _CI/scripts/lint
+  image: IMAGE_WITH_PYTHON37_AND_PIPENV
+  script: _CI/scripts/lint.py
 
 test:
-  tags:
-    - docker
+  tags: [docker]
   stage: test
-  image: https://enexis-docker-local.jfrog.io/python_ci_runner_image:0.1.0
-  script:
-    - _CI/scripts/test
+  image: IMAGE_WITH_PYTHON37_AND_PIPENV
+  script: _CI/scripts/test.py
 
 build:
-  tags:
-    - docker
+  tags: [docker]
   stage: build
-  image: https://enexis-docker-local.jfrog.io/python_ci_runner_image:0.1.0
-  script:
-    - _CI/scripts/build
+  image: IMAGE_WITH_PYTHON37_AND_PIPENV
+  script: _CI/scripts/build.py
 
 upload:
-  tags:
-    - docker
+  tags: [docker]
   stage: upload
-  image: https://enexis-docker-local.jfrog.io/python_ci_runner_image:0.1.0
+  image: IMAGE_WITH_PYTHON37_AND_PIPENV
   only:
     - tags
-  script:
-    - _CI/scripts/upload
-
-# docs:
-#   tags:
-#     - docker
-#   stage: docs
-#   image: enx-docker-multirunner
-#   only:
-#     - tags
-#   script:
-#     - _CI/scripts/document
+  except:
+    - branches
+  script: _CI/scripts/upload.py

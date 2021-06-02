@@ -24,7 +24,7 @@
 #
 
 """
-gitwrapperlib package
+gitwrapperlib package.
 
 Import all parts from gitwrapperlib here
 
@@ -37,7 +37,7 @@ from .gitwrapperlib import Git
 
 __author__ = '''Costas Tyfoxylos <costas.tyf@gmail.com>'''
 __docformat__ = '''google'''
-__date__ = '''2018-01-02'''
+__date__ = '''02-01-2018'''
 __copyright__ = '''Copyright 2018, Costas Tyfoxylos'''
 __license__ = '''MIT'''
 __maintainer__ = '''Costas Tyfoxylos'''
