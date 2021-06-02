@@ -7,3 +7,9 @@ History
 ---------------------
 
 * First code creation
+
+
+0.9.3 (02-06-2021)
+------------------
+
+* Bumped dependencies.
