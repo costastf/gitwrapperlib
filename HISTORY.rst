@@ -13,3 +13,9 @@ History
 ------------------
 
 * Bumped dependencies.
+
+
+0.9.4 (07-07-2021)
+------------------
+
+* Added pipeline.
