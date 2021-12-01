@@ -70,7 +70,7 @@ LOGGER.addHandler(logging.NullHandler())
 
 
 class Git:
-    """Models the git command and contstructs some extra helper methods."""
+    """Models the git command and constructs some extra helper methods."""
 
     passthrough_methods = ('init', 'pull')
     argument_methods = ('add', 'clone', 'push')
