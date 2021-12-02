@@ -70,16 +70,18 @@ LOGGER.addHandler(logging.NullHandler())
 
 
 class Git:
-    """Models the git command and contstructs some extra helper methods."""
+    """Models the git command and constructs some extra helper methods."""
 
     passthrough_methods = ('init', 'pull')
     argument_methods = ('add', 'clone', 'push')
 
-    def __init__(self):
+    def __init__(self, tty_out=True):
         logger_name = u'{base}.{suffix}'.format(base=LOGGER_BASENAME,
                                                 suffix=self.__class__.__name__)
         self._logger = logging.getLogger(logger_name)
         self._git = self._get_command()
+        if not tty_out:
+            self._git.bake(_tty_out=False)
 
     @staticmethod
     def _get_command():
