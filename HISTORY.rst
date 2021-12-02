@@ -25,3 +25,9 @@ History
 -------------------
 
 * Implemented optional tty output.
+
+
+0.10.1 (02-12-2021)
+-------------------
+
+* Updated self referencial dependency for to pipeline tooling.
