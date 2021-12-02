@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "830202288ccb3f84ea8ac93ec271d09f3bb9a4924f852a520f5f0989b5b38a4d"
+            "sha256": "e32ec6465fa35e8a35c788828b64ef90b63501a9201334d3a58bcd5f5a9ef2f0"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -202,11 +202,11 @@
         },
         "gitwrapperlib": {
             "hashes": [
-                "sha256:05145e66b8995b07455b5e7653ef946d0d2045656d68358d660eb247697444a0",
-                "sha256:9566268e34b082eeb68678b6eeed30125279f2612bdc591b1facdb254335f891"
+                "sha256:6acf8c04ee6585137194a9c870022154620296d3c89e449a10790fa85868cab5",
+                "sha256:ac7754c2560b41e4a05798499a269181263dea9844ee0c8b2226626a91bbeefd"
             ],
             "index": "pypi",
-            "version": "==0.9.4"
+            "version": "==0.10.0"
         },
         "humanfriendly": {
             "hashes": [
@@ -399,10 +399,10 @@
         },
         "pkginfo": {
             "hashes": [
-                "sha256:65175ffa2c807220673a41c371573ac9a1ea1b19ffd5eef916278f428319934f",
-                "sha256:bb55a6c017d50f2faea5153abc7b05a750e7ea7ae2cbb7fb3ad6f1dcf8d40988"
+                "sha256:542e0d0b6750e2e21c20179803e40ab50598d8066d51097a0e382cba9eb02bff",
+                "sha256:c24c487c6a7f72c66e816ab1796b96ac6c3d14d49338293d2141664330b55ffc"
             ],
-            "version": "==1.8.1"
+            "version": "==1.8.2"
         },
         "platformdirs": {
             "hashes": [
