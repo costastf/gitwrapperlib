@@ -19,3 +19,9 @@ History
 ------------------
 
 * Added pipeline.
+
+
+0.10.0 (02-12-2021)
+-------------------
+
+* Implemented optional tty output.
