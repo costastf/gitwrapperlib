@@ -81,7 +81,7 @@ class Git:
         self._logger = logging.getLogger(logger_name)
         self._git = self._get_command()
         if not tty_out:
-            self._git.bake(_tty_out=False)
+            self._git = self._git.bake(_tty_out=False)
 
     @staticmethod
     def _get_command():
