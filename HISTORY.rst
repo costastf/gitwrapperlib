@@ -37,3 +37,9 @@ History
 -------------------
 
 * Fix for tty_output in lambda contexts.
+
+
+0.10.3 (06-12-2021)
+-------------------
+
+* Self reference update for pipeline.
