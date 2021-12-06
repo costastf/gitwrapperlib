@@ -31,3 +31,9 @@ History
 -------------------
 
 * Updated self referencial dependency for to pipeline tooling.
+
+
+0.10.2 (06-12-2021)
+-------------------
+
+* Fix for tty_output in lambda contexts.
