@@ -50,7 +50,7 @@ except ImportError:
         def __getattr__(self, attr):
             return pbs.Command(attr)
     sh = Sh()
-from .gitwrapperlibexceptions import ExecutableNotFound, BranchNotFound, RemoteNotFound
+from .gitwrapperlibexceptions import ExecutableNotFound, BranchNotFound
 
 __author__ = '''Costas Tyfoxylos <costas.tyf@gmail.com>'''
 __docformat__ = '''google'''
@@ -169,17 +169,14 @@ class Git:
         """Returns the remote default branch."""
         branch = None
 
-        try:
-            remote = str(self._git.remote('show', 'origin'))
-            match = re.search(r'HEAD branch: (\S+)', remote)
-            if match:
-                branch = match.group(1)
-                if branch == '(unknown)':
-                    branch = None
-        except sh.ErrorReturnCode:
-            raise RemoteNotFound
-
-        if not branch:
+        remote = str(self._git.remote('show', 'origin'))
+        match = re.search(r'HEAD branch: (\S+)', remote)
+        if match:
+            branch = match.group(1)
+        if not branch or branch == '(unknown)':
+            self._logger.error(
+                "Failed to detect default remote branch, please check your remote settings"
+            )
             raise BranchNotFound
 
         return branch

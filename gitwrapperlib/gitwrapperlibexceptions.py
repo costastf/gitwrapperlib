@@ -48,7 +48,3 @@ class ExecutableNotFound(Exception):
 
 class BranchNotFound(Exception):
     """The default branch could not be located."""
-
-
-class RemoteNotFound(Exception):
-    """The default origin remote could not be found."""
