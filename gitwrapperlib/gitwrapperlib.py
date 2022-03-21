@@ -127,12 +127,12 @@ class Git:
         """Pushes to default branch."""
         branch = self._git('symbolic-ref', '--short', 'refs/remotes/origin/HEAD').split('/')[-1].rstrip()
         self.push_branch(branch)
-  
+
     def push_force_default(self):
         """Force pushes to default branch."""
         branch = self._git('symbolic-ref', '--short', 'refs/remotes/origin/HEAD').split('/')[-1].rstrip()
         self.push_force_branch(branch)
-        
+
     def push_master(self):
         """Pushes to master."""
         self.push_branch('master')
@@ -144,7 +144,7 @@ class Git:
     def push_branch(self, branch):
         """Force pushes to a branch."""
         self._git.push('origin', branch)
-        
+
     def push_force_branch(self, branch):
         """Force pushes to a branch."""
         self._git.push('origin', branch, '--force')
