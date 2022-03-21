@@ -44,3 +44,7 @@ __status__ = '''Development'''  # "Prototype", "Development", "Production".
 
 class ExecutableNotFound(Exception):
     """The git command was not found on the system."""
+
+
+class BranchNotFound(Exception):
+    """The default branch could not be located."""
