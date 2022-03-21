@@ -125,7 +125,7 @@ class Git:
 
     def push_master(self):
         """Pushes to master."""
-        self._git.push('master')
+        self._git.push('origin', 'master')
 
     def push_force_master(self):
         """Force pushes to master."""
