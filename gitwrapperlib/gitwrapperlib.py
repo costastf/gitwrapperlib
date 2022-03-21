@@ -50,7 +50,9 @@ except ImportError:
         def __getattr__(self, attr):
             return pbs.Command(attr)
     sh = Sh()
-from .gitwrapperlibexceptions import ExecutableNotFound, BranchNotFound
+from .gitwrapperlibexceptions import (ExecutableNotFound,
+                                      BranchNotFound,
+                                      RemoteOriginError)
 
 __author__ = '''Costas Tyfoxylos <costas.tyf@gmail.com>'''
 __docformat__ = '''google'''
@@ -141,10 +143,6 @@ class Git:
         """Force pushes to a branch."""
         self._git.push('origin', branch, '--force')
 
-    def branch_upstream_to_master(self):
-        """Branches upstream to master."""
-        self._git.branch('-u', 'origin/master')
-
     def get_branches(self):
         """Returns a list of the branches."""
         return [self._sanitize(branch)
@@ -167,18 +165,16 @@ class Git:
 
     def get_default_branch(self):
         """Returns the remote default branch."""
-        branch = None
-
-        remote = str(self._git.remote('show', 'origin'))
-        match = re.search(r'HEAD branch: (\S+)', remote)
-        if match:
-            branch = match.group(1)
-        if not branch or branch == '(unknown)':
-            self._logger.error(
-                "Failed to detect default remote branch, please check your remote settings"
-            )
-            raise BranchNotFound
-
+        show_origin_text = str(self._git.remote('show', 'origin'))
+        try:
+            branch = re.search(r'HEAD branch: (\S+)', show_origin_text).group(1)
+        except (IndexError, AttributeError):
+            raise RemoteOriginError(f'git remote show origin command did not respond as expected, '
+                                    f'received :{show_origin_text}')
+        if branch == '(unknown)':
+            message = 'Failed to detect default remote branch, please check your remote settings.'
+            self._logger.error(message)
+            raise BranchNotFound(message)
         return branch
 
     def create_branch(self, name):

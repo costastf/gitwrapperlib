@@ -48,3 +48,7 @@ class ExecutableNotFound(Exception):
 
 class BranchNotFound(Exception):
     """The default branch could not be located."""
+
+
+class RemoteOriginError(Exception):
+    """The remote origin response is not as expected."""
