@@ -123,23 +123,13 @@ class Git:
         """Adds the remote origin."""
         self._git.remote('add', 'origin', url)
 
-    def push_default(self):
-        """Pushes to default branch."""
-        branch = self._git('symbolic-ref', '--short', 'refs/remotes/origin/HEAD').split('/')[-1].rstrip()
-        self.push_branch(branch)
-
-    def push_force_default(self):
-        """Force pushes to default branch."""
-        branch = self._git('symbolic-ref', '--short', 'refs/remotes/origin/HEAD').split('/')[-1].rstrip()
-        self.push_force_branch(branch)
-
     def push_master(self):
         """Pushes to master."""
-        self.push_branch('master')
+        self._git.push('master')
 
     def push_force_master(self):
         """Force pushes to master."""
-        self.push_force_branch('master')
+        self._git.push('origin', 'master', '--force')
 
     def push_branch(self, branch):
         """Force pushes to a branch."""
@@ -172,6 +162,10 @@ class Git:
                      for branch in self._git.branch(color="never").splitlines()
                      if branch.startswith('*')),
                     None)
+
+    def get_default_branch(self):
+        """Returns the remote default branch."""
+        return re.findall('HEAD branch: (\w+)', str(self._git.remote('show', 'origin')))[0]
 
     def create_branch(self, name):
         """Creates a branch."""
