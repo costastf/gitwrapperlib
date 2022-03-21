@@ -43,3 +43,9 @@ History
 -------------------
 
 * Self reference update for pipeline.
+
+
+1.0.0 (21-03-2022)
+------------------
+
+* Removed references to master branch and implemented default remote retrieval, courtesy of Sten Spans <sspans@schubergphilis.com>
