@@ -134,7 +134,7 @@ class Git:
         self._git.push('origin', branch, '--force')
 
     def push_branch(self, branch):
-        """Force pushes to a branch."""
+        """Pushes to a branch."""
         self._git.push('origin', branch)
 
     def push_force_branch(self, branch):
