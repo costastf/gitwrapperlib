@@ -33,7 +33,7 @@ Tests for `gitwrapperlib` module.
 
 """
 
-from betamax.fixtures import unittest
+import unittest
 
 __author__ = '''Costas Tyfoxylos <costas.tyf@gmail.com>'''
 __docformat__ = '''google'''
@@ -46,7 +46,7 @@ __email__ = '''<costas.tyf@gmail.com>'''
 __status__ = '''Development'''  # "Prototype", "Development", "Production".
 
 
-class TestGitwrapperlib(unittest.BetamaxTestCase):
+class TestGitwrapperlib(unittest.TestCase):
 
     def setUp(self):
         """
