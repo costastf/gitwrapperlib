@@ -50,7 +50,7 @@ except ImportError:
         def __getattr__(self, attr):
             return pbs.Command(attr)
     sh = Sh()
-from .gitwrapperlibexceptions import ExecutableNotFound
+from .gitwrapperlibexceptions import ExecutableNotFound, BranchNotFound, RemoteNotFound
 
 __author__ = '''Costas Tyfoxylos <costas.tyf@gmail.com>'''
 __docformat__ = '''google'''
@@ -123,13 +123,15 @@ class Git:
         """Adds the remote origin."""
         self._git.remote('add', 'origin', url)
 
-    def push_master(self):
-        """Pushes to master."""
-        self._git.push('origin', 'master')
+    def push_default(self):
+        """Pushes to the default branch."""
+        branch = self.get_default_branch()
+        self._git.push('origin', branch)
 
-    def push_force_master(self):
-        """Force pushes to master."""
-        self._git.push('origin', 'master', '--force')
+    def push_force_default(self):
+        """Force pushes to the default branch."""
+        branch = self.get_default_branch()
+        self._git.push('origin', branch, '--force')
 
     def push_branch(self, branch):
         """Force pushes to a branch."""
@@ -165,7 +167,22 @@ class Git:
 
     def get_default_branch(self):
         """Returns the remote default branch."""
-        return re.findall('HEAD branch: (\w+)', str(self._git.remote('show', 'origin')))[0]
+        branch = None
+
+        try:
+            remote = str(self._git.remote('show', 'origin'))
+            match = re.search(r'HEAD branch: (\S+)', remote)
+            if match:
+                branch = match.group(1)
+                if branch == '(unknown)':
+                    branch = None
+        except sh.ErrorReturnCode:
+            raise RemoteNotFound
+
+        if not branch:
+            raise BranchNotFound
+
+        return branch
 
     def create_branch(self, name):
         """Creates a branch."""
