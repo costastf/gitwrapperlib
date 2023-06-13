@@ -27,7 +27,7 @@
 Main code for gitwrapperlib.
 
 .. _Google Python Style Guide:
-   http://google.github.io/styleguide/pyguide.html
+   https://google.github.io/styleguide/pyguide.html
 
 """
 
@@ -40,7 +40,7 @@ except ImportError:
     # fallback: emulate the sh API with pbs
     import pbs
 
-    class Sh:  # pylint: disable=too-few-public-methods
+    class Sh:
         """
         Overloading pbs to look like sh.
 
@@ -78,8 +78,7 @@ class Git:
     argument_methods = ('add', 'clone', 'push')
 
     def __init__(self, tty_out=True):
-        logger_name = u'{base}.{suffix}'.format(base=LOGGER_BASENAME,
-                                                suffix=self.__class__.__name__)
+        logger_name = f'{LOGGER_BASENAME}.{self.__class__.__name__}'
         self._logger = logging.getLogger(logger_name)
         self._git = self._get_command()
         if not tty_out:
@@ -91,14 +90,14 @@ class Git:
             try:
                 sh.git()
             except WindowsError:  # pylint: disable=undefined-variable
-                raise ExecutableNotFound
+                raise ExecutableNotFound from None
             except pbs.ErrorReturnCode_1:
                 git = sh.git
         else:
             try:
                 git = sh.Command('git')
             except sh.CommandNotFound:
-                raise ExecutableNotFound
+                raise ExecutableNotFound from None
         return git
 
     def __getattr__(self, name):  # pylint: disable=inconsistent-return-statements
@@ -170,7 +169,7 @@ class Git:
             branch = re.search(r'HEAD branch: (\S+)', show_origin_text).group(1)
         except (IndexError, AttributeError):
             raise RemoteOriginError(f'git remote show origin command did not respond as expected, '
-                                    f'received :{show_origin_text}')
+                                    f'received :{show_origin_text}') from None
         if branch == '(unknown)':
             message = 'Failed to detect default remote branch, please check your remote settings.'
             self._logger.error(message)
@@ -203,4 +202,4 @@ class Git:
 
     def create_patch(self, from_tag, to_tag):
         """Create a patch between tags."""
-        return str(self._git.diff('{}..{}'.format(from_tag, to_tag), _tty_out=False))
+        return str(self._git.diff(f'{from_tag}..{to_tag}', _tty_out=False))

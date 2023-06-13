@@ -44,23 +44,23 @@ LOGGER.addHandler(logging.NullHandler())
 def build():
     bootstrap()
     clean_up(('build', 'dist'))
-    success = execute_command('pipenv lock')
-    if success:
-        LOGGER.info('Successfully created lock file %s %s',
-                     emojize(':white_heavy_check_mark:'),
-                     emojize(':thumbs_up:'))
-    else:
-        LOGGER.error('%s Errors creating lock file! %s',
-                      emojize(':cross_mark:'),
-                      emojize(':crying_face:'))
-        raise SystemExit(1)
+    # success = execute_command('pipenv lock')
+    # if success:
+    #     LOGGER.info('Successfully created lock file %s %s',
+    #                  emojize(':check_mark_button:'),
+    #                  emojize(':thumbs_up:'))
+    # else:
+    #     LOGGER.error('%s Errors creating lock file! %s',
+    #                   emojize(':cross_mark:'),
+    #                   emojize(':crying_face:'))
+    #     raise SystemExit(1)
     save_requirements()
     for file in BUILD_REQUIRED_FILES:
         shutil.copy(file, os.path.join(f'{PROJECT_SLUG}', file))
     success = execute_command('python setup.py sdist bdist_egg')
     if success:
         LOGGER.info('%s Successfully built artifact %s',
-                    emojize(':white_heavy_check_mark:'),
+                    emojize(':check_mark_button:'),
                     emojize(':thumbs_up:'))
     else:
         LOGGER.error('%s Errors building artifact! %s',

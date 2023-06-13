@@ -15,6 +15,3 @@ Or, if you are using pipenv::
 
     $ pipenv install gitwrapperlib
 
-Or, if you are using pipx::
-
-    $ pipx install gitwrapperlib
