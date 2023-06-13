@@ -1,0 +1,32 @@
+{
+  "template": "git@github.com:costastf/python_project.git",
+  "commit": "7b8c2c21ae2a702adbeb1313297ceaf28cfa4919",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project_type": "lib",
+      "full_name": "Costas Tyfoxylos",
+      "email": "costas.tyf@gmail.com",
+      "repo_name": "Git Wrapper",
+      "main_branch_name": "main",
+      "project_slug": "gitwrapperlib",
+      "project_short_description": "A lightweight wrapper around the git command using sh module.",
+      "git_url": "https://github.com/costastf/gitwrapperlib",
+      "pypi_repository": "https://upload.pypi.org/legacy/",
+      "gitlab_runner_image": "IMAGE_WITH_PYTHON39_AND_PIPENV",
+      "gitlab_runner_tags": "[docker]",
+      "tags": "gitwrapperlib git python sh",
+      "development_status": "Beta",
+      "compatible_versions": "3.9",
+      "documentation_url": "https://gitwrapperlib.readthedocs.org/en/latest",
+      "release_date": "02-01-2018",
+      "year": "2018",
+      "license": "MIT",
+      "_extensions": [
+        "jinja2_time.TimeExtension"
+      ],
+      "_template": "git@github.com:costastf/python_project.git"
+    }
+  },
+  "directory": null
+}
