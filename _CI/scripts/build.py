@@ -44,16 +44,16 @@ LOGGER.addHandler(logging.NullHandler())
 def build():
     bootstrap()
     clean_up(('build', 'dist'))
-    # success = execute_command('pipenv lock')
-    # if success:
-    #     LOGGER.info('Successfully created lock file %s %s',
-    #                  emojize(':check_mark_button:'),
-    #                  emojize(':thumbs_up:'))
-    # else:
-    #     LOGGER.error('%s Errors creating lock file! %s',
-    #                   emojize(':cross_mark:'),
-    #                   emojize(':crying_face:'))
-    #     raise SystemExit(1)
+    success = execute_command('pipenv lock --keep-outdated')
+    if success:
+        LOGGER.info('Successfully created lock file %s %s',
+                     emojize(':check_mark_button:'),
+                     emojize(':thumbs_up:'))
+    else:
+        LOGGER.error('%s Errors creating lock file! %s',
+                      emojize(':cross_mark:'),
+                      emojize(':crying_face:'))
+        raise SystemExit(1)
     save_requirements()
     for file in BUILD_REQUIRED_FILES:
         shutil.copy(file, os.path.join(f'{PROJECT_SLUG}', file))
