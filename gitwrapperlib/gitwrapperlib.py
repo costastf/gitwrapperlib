@@ -81,8 +81,7 @@ class Git:
         logger_name = f'{LOGGER_BASENAME}.{self.__class__.__name__}'
         self._logger = logging.getLogger(logger_name)
         self._git = self._get_command()
-        if not tty_out:
-            self._git = self._git.bake(_tty_out=False)
+        self._git = self._git.bake(_tty_out=tty_out)
 
     @staticmethod
     def _get_command():
@@ -190,7 +189,7 @@ class Git:
 
     def list_tags(self):
         """Lists existing tags."""
-        return self._git.tag()
+        return self._git.tag().splitlines()
 
     def add_tag(self, value):
         """Tag with provided value."""
