@@ -61,3 +61,9 @@ History
 ------------------
 
 * Bump dependencies.
+
+
+1.0.3 (13-06-2023)
+------------------
+
+* Fix for branch and filename conflict.
