@@ -55,3 +55,9 @@ History
 ------------------
 
 * Bump dependencies and update pipeline to python 3.9.
+
+
+1.0.2 (13-06-2023)
+------------------
+
+* Bump dependencies.
