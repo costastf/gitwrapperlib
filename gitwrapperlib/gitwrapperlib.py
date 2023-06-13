@@ -187,7 +187,7 @@ class Git:
 
     def switch_branch(self, name):
         """Switches to a branch."""
-        self._git.checkout(name)
+        self._git.checkout(name, "--")
 
     def list_tags(self):
         """Lists existing tags."""
