@@ -49,3 +49,9 @@ History
 ------------------
 
 * Removed references to master branch and implemented default remote retrieval, courtesy of Sten Spans <sspans@schubergphilis.com>
+
+
+1.0.1 (13-06-2023)
+------------------
+
+* Bump dependencies and update pipeline to python 3.9.
