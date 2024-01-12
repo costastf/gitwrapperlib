@@ -67,3 +67,9 @@ History
 ------------------
 
 * Fix for branch and filename conflict.
+
+
+1.0.4 (12-01-2024)
+------------------
+
+* Bump dependencies.
